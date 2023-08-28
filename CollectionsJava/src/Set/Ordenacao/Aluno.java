@@ -1,6 +1,8 @@
 package Set.Ordenacao;
 
-public class Aluno {
+import java.util.Comparator;
+
+public class Aluno implements Comparable<Aluno>{
     private String nome;
     private Long matricula;
     private double media;
@@ -33,5 +35,15 @@ public class Aluno {
         return "Aluno [nome= " + nome + ", matricula=" + matricula + ", media=" + media + "]";
     }
 
-    
+
+    @Override
+    public int compareTo(Aluno aluno) {
+        return nome.compareTo(aluno.getNome());
+    }   
+}
+class ComparatorNota implements Comparator<Aluno> {
+  @Override
+  public int compare(Aluno o1, Aluno o2) {
+    return Double.compare(o1.getMedia(), o2.getMedia());
+  }
 }
